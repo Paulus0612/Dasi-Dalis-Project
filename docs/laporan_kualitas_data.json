@@ -1,0 +1,16 @@
+{
+  "sebelum": {
+    "completeness": 1.0,
+    "validity": 1.0,
+    "consistency": 1.0,
+    "uniqueness": 1.0,
+    "n_rows": 5000
+  },
+  "sesudah": {
+    "completeness": 1.0,
+    "validity": 1.0,
+    "consistency": 1.0,
+    "uniqueness": 1.0,
+    "n_rows": 5000
+  }
+}
