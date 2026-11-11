@@ -5,11 +5,19 @@ export const qs = (f) => {
 };
 
 export const get = (path, f = {}) =>
-  fetch(`/api/${path}${qs(f)}`).then((r) => r.json());
+  fetch(`/api/${path}${qs(f)}`).then(async (r) => {
+    const data = await r.json();
+    if (!r.ok) throw new Error(data?.detail?.errors?.join(", ") || "Permintaan gagal.");
+    return data;
+  });
 
 export const predict = (body) =>
   fetch("/api/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
-  }).then((r) => r.json());
+  }).then(async (r) => {
+    const data = await r.json();
+    if (!r.ok) throw new Error(data?.detail?.errors?.join(", ") || "Prediksi gagal.");
+    return data;
+  });

@@ -20,9 +20,13 @@ app = FastAPI(title="Model Diare Balita Toba")
 class Input(BaseModel):
     usia_balita_bulan: int = Field(ge=0, le=59)
     jenis_kelamin: str; kecamatan: str
-    berat_badan_kg: float; panjang_tinggi_badan_cm: float; hb_ibu_g_dL: float
+    berat_badan_kg: float = Field(ge=2, le=30)
+    panjang_tinggi_badan_cm: float = Field(ge=40, le=125)
+    hb_ibu_g_dL: float = Field(ge=5, le=18)
     status_kehamilan_saat_pemeriksaan_hb: str
-    masih_mendapat_asi: str; jumlah_kelompok_pangan_24_jam: int; frekuensi_makan_24_jam: int
+    masih_mendapat_asi: str
+    jumlah_kelompok_pangan_24_jam: int = Field(ge=0, le=10)
+    frekuensi_makan_24_jam: int = Field(ge=0, le=10)
     air_minum_dimasak: str; cuci_tangan_pakai_sabun: str
     bulan: int = Field(default=1, ge=1, le=12)
 
